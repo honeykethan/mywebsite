@@ -1027,15 +1027,15 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="#" class="form" data-form>
+          <form onsubmit="sendEmail(); reset(); return false;" class="form" data-form>
 
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input id= "name" type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
 
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <input id="email" type="email" name="email" class="form-input" placeholder="Email address" cccccccc>
             </div>
 
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <textarea id="message" name="message" class="form-input" rows="6" placeholder="Your Message" required data-form-input></textarea>
 
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
@@ -1047,12 +1047,11 @@
         </section>
 
       </article>
-
+      
     </div>
-
+    
   </main>
-
-
+  
 
 
 
@@ -1067,6 +1066,26 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+  <!--
+    - mail sender link
+  -->
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+           function sendEmail(){
+              Email.send({
+              SecureToken : "2746d1c9-1261-4c13-b132-2cae837600f2",
+              To : 'honeykethan@gmail.com',
+              From : "honeykethan@gmail.com",
+              Subject : "New Contact Form",
+              Body : "Name: " + document.getElementById("name").value
+              + "<br> Email: " + document.getElementById("email").value
+              + "<br> Message: " + document.getElementById("message").value
+              }).then(
+              message => alert("Message Sent Successfully")
+              );
+              }
+  </script>
 
 </body>
 
